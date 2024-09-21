@@ -18,14 +18,14 @@ def preprocess(dataset_path):
     test['claim'] = test['claim'].str.lower()
     validation['claim'] = validation['claim'].str.lower()
 
-    train['label']= train['label'].replace(-1, 4)
-    test['label'] = test['label'].replace(-1, 4)
-    validation['label'] = validation['label'].replace(-1, 4)
+    train = train[train['label']!=-1]
+    test = test[test['label']!=-1] 
+    validation = validation[validation['label']!=-1]
 
     return train, test, validation
 
 def tokenize_and_save(data,folder_path,file_name):
-    tokenizer = DistilBertTokenizer.from_pretrained('austinmw/distilbert-base-uncased-finetuned-health_facts')
+    tokenizer = DistilBertTokenizer.from_pretrained('austinmw/distilbert-base-uncased-finetuned-health_facts',    clean_up_tokenization_spaces=True)
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
         
