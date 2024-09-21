@@ -17,6 +17,11 @@ def preprocess(dataset_path):
     train['claim'] = train['claim'].str.lower()
     test['claim'] = test['claim'].str.lower()
     validation['claim'] = validation['claim'].str.lower()
+
+    train['label']= train['label'].replace(-1, 4)
+    test['label'] = test['label'].replace(-1, 4)
+    validation['label'] = validation['label'].replace(-1, 4)
+
     return train, test, validation
 
 def tokenize_and_save(data,folder_path,file_name):
