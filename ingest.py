@@ -1,4 +1,3 @@
-#ingest.py
 import os
 import argparse
 import pandas as pd 
@@ -26,5 +25,4 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
 
-    # Call the function with the provided path
     download_and_save(args.path)
