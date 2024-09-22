@@ -57,6 +57,22 @@ class HealthDataLoader(torch.utils.data.Dataset):
 
 
 def load_data(preprocess_path):
+    """
+    Loads preprocessed tokenized datasets from specified file paths and 
+    returns them as instances of the HealthDataLoader.
+
+    This function loads the train, validation, and test datasets from 
+    their respective tokenized files, constructs HealthDataLoader 
+    instances, and returns them.
+
+    Args:
+        preprocess_path (str): Path to the folder containing the tokenized 
+                               data files (train_tokens.pt, validation_tokens.pt).
+
+    Returns:
+        tuple: Three HealthDataLoader instances for train, validation, and test datasets.
+
+    """
     train_data = torch.load(os.path.join(preprocess_path, 'train_tokens.pt'),weights_only=True)
     validation_data = torch.load(os.path.join(preprocess_path, 'validation_tokens.pt'),weights_only=True)
     test_data = torch.load(os.path.join('./preprocess', 'test_tokens.pt'),weights_only=True)
@@ -70,8 +86,8 @@ def load_data(preprocess_path):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Train DistilBert Model')
-    parser.add_argument('--preprocess-path', type=str, default='./preprocess', help='Path to retrieve preprocessed tokens')
-    parser.add_argument('--store-model', type=str, default='./models', help='Path to save trained weight & tokenizer')
+    parser.add_argument('--preprocess-path', type=str, default='./preprocess', help='Path to retrieve preprocessed tokens(default: ./preprocess)')
+    parser.add_argument('--store-model', type=str, default='./models', help='Path to save trained weight & tokenizer(default: ./models)')
 
     args = parser.parse_args()
     model_path = args.store_model

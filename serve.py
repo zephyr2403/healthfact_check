@@ -30,6 +30,16 @@ class ClaimInfo(BaseModel):
     claim_text: str
 
 def get_veracity(text):
+    """
+    Analyzes the veracity of the provided text using a pretrained model.
+
+    Args:
+        text (str): The text to be analyzed for veracity.
+
+    Returns:
+        int: The predicted label index, representing the model's classification 
+        of the input text.
+    """
     logger.info('Tokenizing Text..')
     inputs = tokenizer(text, padding=True, truncation=True, max_length=512, return_tensors="pt").to(device)
     
