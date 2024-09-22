@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: check-veracity-deployment
+  labels:
+    app: check-veracity
+spec:
+  replicas: 1  # Number of pod replicas
+  selector:
+    matchLabels:
+      app: check-veracity
+  template:
+    metadata:
+      labels:
+        app: check-veracity
+    spec:
+      containers:
+        - name: check-veracity
+          image: check-veracity:latest 
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+          command: ["uvicorn", "serve:app", "--host", "0.0.0.0", "--port", "5000", "--reload"]

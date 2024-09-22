@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   check-veracity:
-    image: unga_bunga
+    image: check-veracity
     container_name: check-veracity
     build:
       context: .
