@@ -31,7 +31,7 @@ pip3 install -r requirements.txt
 ```
 usage: ingest.py [-h] [--path PATH]
 
-Download and save the PUBMED dataset.
+Download and save the ImperialCollegeLondon/health_fact dataset.
 
 optional arguments:
   -h, --help   show this help message and exit
