@@ -1,4 +1,6 @@
-./dataset
-./models/*
-./preprocess/*
-./results/
+dataset
+models/*
+preprocess/*
+results/
+__pycache__
+.pytest_cache
