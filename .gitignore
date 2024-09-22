@@ -1,6 +1,6 @@
 dataset
-models/*
-preprocess/*
-results/
+models
+preprocess
+results
 __pycache__
 .pytest_cache
